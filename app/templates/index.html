@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  <div style="text-align: center; padding: 2rem;">
+    <h1 style="font-size: 3rem; color: #2e7d32;">Bem-vindo ao <span style="font-weight: bold;">MED +</span></h1>
+    <p style="font-size: 1.2rem; color: #555; max-width: 600px; margin: 1rem auto;">
+      Um sistema inteligente e seguro para registro de sintomas, diagnósticos e acompanhamento médico. Tudo isso com responsabilidade e foco em saúde.
+    </p>
+
+    <div style="margin-top: 2.5rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+      <a href="/login/" style="background-color: #43a047; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        ➕ Registrar Diagnóstico
+      </a>
+      <a href="/diagnosticos/" style="background-color: #66bb6a; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        💉 Ver Sintomas
+      </a>
+    </div>
+
+   
+{% endblock %}

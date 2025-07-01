@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MED +</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+      color: #1a1a1a;
+    }
+    nav {
+      background-color: #000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: #ccc;
+    }
+    .container {
+      max-width: 960px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    h1, h2 {
+      font-weight: 600;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div style="color: white; font-weight: bold; font-size: 1.3rem;">MED +</div>
+    <div>
+      <a href="/">Início</a>
+      <a href="/doenças/">Doenças</a>
+      <a href="/diagnosticos/">Diagnósticos</a>
+    </div>
+  </nav>
+  <div class="container">
+    {% block conteudo %}{% endblock %}
+  </div>
+</body>
+</html>

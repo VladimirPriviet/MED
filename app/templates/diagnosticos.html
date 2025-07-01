@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  <h2>Diagnósticos Registrados</h2>
+  {% for diag in diagnosticos %}
+    <div class="card">
+      <strong>Paciente:</strong> {{ diag.paciente.nome }}<br>
+      <strong>Data:</strong> {{ diag.data_diagnostico }}<br>
+      <strong>Sintomas:</strong>
+      <ul>
+        {% for sintoma in diag.sintomas.all %}
+          <li>{{ sintoma.nome }}</li>
+        {% endfor %}
+      </ul>
+      <strong>Descrição:</strong>
+      <p>{{ diag.descricao }}</p>
+    </div>
+  {% empty %}
+    <p>Nenhum diagnóstico encontrado.</p>
+  {% endfor %}
+{% endblock %}

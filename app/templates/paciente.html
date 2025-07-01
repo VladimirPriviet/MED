@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  <h2>Lista de Pacientes</h2>
+  {% for paciente in pacientes %}
+    <div class="card">
+      <strong>Nome:</strong> {{ paciente.nome }}<br>
+      <strong>CPF:</strong> {{ paciente.cpf }}<br>
+      <strong>Data de Nascimento:</strong> {{ paciente.data_nascimento }}<br>
+      <strong>Email:</strong> {{ paciente.email }}
+    </div>
+  {% empty %}
+    <p>Nenhum paciente registrado.</p>
+  {% endfor %}
+{% endblock %}
