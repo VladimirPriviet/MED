@@ -49,11 +49,15 @@
   <nav>
     <div style="color: white; font-weight: bold; font-size: 1.3rem;">MED +</div>
     <div>
-      <a href="/">Início</a>
-      <a href="/doenças/">Doenças</a>
-      <a href="/diagnosticos/">Diagnósticos</a>
+      <a href="{% url 'index' %}">Início</a>
+      <a href="{% url 'doencas' %}">Doenças</a>
+      <a href="{% url 'diagnosticos_list' %}">Diagnósticos</a>
+      <a href="{% url 'consultas' %}">Consultas</a>
+      <a href="{% url 'casos_mais_registrados' %}">Casos Mais Registrados</a>
     </div>
   </nav>
+  
+  
   <div class="container">
     {% block conteudo %}{% endblock %}
   </div>

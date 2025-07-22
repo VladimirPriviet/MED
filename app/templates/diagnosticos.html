@@ -2,20 +2,26 @@
 
 {% block conteudo %}
   <h2>Diagnósticos Registrados</h2>
-  {% for diag in diagnosticos %}
+
+  {% for diagnostico in diagnosticos %}
     <div class="card">
-      <strong>Paciente:</strong> {{ diag.paciente.nome }}<br>
-      <strong>Data:</strong> {{ diag.data_diagnostico }}<br>
+      <strong>Paciente:</strong> {{ diagnostico.paciente.nome }}<br>
+      <strong>Data:</strong> {{ diagnostico.data_diagnostico|date:"F j, Y" }}<br>
+
       <strong>Sintomas:</strong>
       <ul>
-        {% for sintoma in diag.sintomas.all %}
-          <li>{{ sintoma.nome }}</li>
-        {% endfor %}
+        {% if diagnostico.doenca.sintomas_comuns.count %}
+          {% for sintoma in diagnostico.doenca.sintomas_comuns.all %}
+            <li>{{ sintoma.nome }}</li>
+          {% endfor %}
+        {% else %}
+          <li>Sem sintomas cadastrados</li>
+        {% endif %}
       </ul>
-      <strong>Descrição:</strong>
-      <p>{{ diag.descricao }}</p>
+
+      <strong>Descrição:</strong> {{ diagnostico.observacoes }}
     </div>
   {% empty %}
-    <p>Nenhum diagnóstico encontrado.</p>
+    <p>Nenhum diagnóstico registrado.</p>
   {% endfor %}
 {% endblock %}

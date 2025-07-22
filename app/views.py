@@ -1,23 +1,44 @@
-# app/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from django.contrib import messages # Importe messages se for usar
-from .models import Paciente, Sintoma, Doenca, Diagnostico # Certifique-se de que todas as models necessárias estão importadas
-from .forms import PacienteForm, DiagnosticoForm, SintomaForm, DoencaForm # Importe todos os formulários se for usar
+from django.contrib import messages
+from django.db.models import Count
+from .models import Paciente, Sintoma, Doenca, Diagnostico, Consulta
+from .forms import PacienteForm, DiagnosticoForm, SintomaForm, DoencaForm
+
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'index.html')
 
-class PacientesListView(View): # Nome alterado para clareza e consistência com a lista
+
+class PacientesListView(View):
     def get(self, request, *args, **kwargs):
         pacientes = Paciente.objects.all()
         return render(request, 'pacientes.html', {'pacientes': pacientes})
 
-class DiagnosticosListView(View): # Nome alterado para clareza e consistência com a lista
+
+class DiagnosticosListView(View): 
     def get(self, request, *args, **kwargs):
-        diagnosticos = Diagnostico.objects.all() # Alterado para all() para simplificar o exemplo, select_related pode ser adicionado depois
+        diagnosticos = Diagnostico.objects.all() 
         return render(request, 'diagnosticos.html', {'diagnosticos': diagnosticos})
 
-# ... (adicione as outras views que eu forneci anteriormente, como PacienteDetailView, PacienteCreateView, etc.)
-# ... (adicione as views para Sintomas e Doenças, se necessário)
+
+def doencas_view(request):
+    doencas = Doenca.objects.all()  
+    return render(request, 'doencas.html', {'doencas': doencas})
+
+
+class ConsultasListView(View):
+    def get(self, request, *args, **kwargs):
+        consultas = Consulta.objects.all()
+        return render(request, 'consultas.html', {'consultas': consultas})
+
+
+class CasosMaisRegistradosView(View):
+    def get(self, request, *args, **kwargs):
+        casos = Doenca.objects.annotate(
+            quantidade=Count('diagnostico')
+        ).order_by('-quantidade')[:3]
+        return render(request, 'casosemalta.html', {'casos': casos})
+
+

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  <h2>Doenças Registradas</h2>
+
+  {% for doenca in doencas %}
+    <div class="card">
+      <strong>Nome da Doença:</strong> {{ doenca.nome }}<br>
+      
+      {% if doenca.sintomas_comuns.count %}
+        <strong>Sintomas associados:</strong>
+        <ul>
+          {% for sintoma in doenca.sintomas_comuns.all %}
+            <li>{{ sintoma.nome }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <strong>Descrição:</strong>
+      <p>{{ doenca.descricao }}</p>
+    </div>
+  {% empty %}
+    <p>Nenhuma doença cadastrada.</p>
+  {% endfor %}
+{% endblock %}

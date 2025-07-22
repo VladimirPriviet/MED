@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  <div style="text-align: center; padding: 2rem;">
+    <h1 style="font-size: 2.5rem; color: #2e7d32;">👨‍⚕️ Médicos Mais Presentes</h1>
+    <p style="font-size: 1.1rem; color: #555; max-width: 600px; margin: 1rem auto;">
+      Confira os três médicos que mais realizaram consultas no MED+.
+    </p>
+
+    <div style="margin-top: 2rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;">
+      {% for medico in medicos %}
+        <div style="background-color: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 12px; padding: 1.5rem; width: 300px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <h2 style="color: #1b5e20;">{{ medico.medico_responsavel }}</h2>
+          <p style="margin-top: 0.5rem; font-weight: bold; color: #2e7d32;">Consultas realizadas: {{ medico.quantidade }}</p>
+        </div>
+      {% empty %}
+        <p>Nenhum médico registrado ainda.</p>
+      {% endfor %}
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <a href="/" style="background-color: #66bb6a; color: white; padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600;">
+        ⬅️ Voltar ao Início
+      </a>
+    </div>
+  </div>
+{% endblock %}

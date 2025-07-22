@@ -45,7 +45,6 @@ class DiagnosticoForm(forms.ModelForm):
             Submit('submit', 'Salvar Diagnóstico', css_class='btn btn-success mt-2')
         )
 
-# Formulários para Sintoma e Doença (opcional, mas útil para o admin ou futuras telas de cadastro)
 class SintomaForm(forms.ModelForm):
     class Meta:
         model = Sintoma
